@@ -1,9 +1,5 @@
 BufWrL : UGen {
-	*ar { |input, gain|
-		/* TODO */ ^this.multiNew('audio', input, gain);
-	}
-	checkInputs {
-		/* TODO */
-		^this.checkValidInputs;
+	*ar { |bufNum, phase, sample|
+		^this.multiNew('audio', bufNum, phase, sample);
 	}
 }

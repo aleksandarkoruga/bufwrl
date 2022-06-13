@@ -7,18 +7,21 @@
 
 namespace BufWrL {
 
-class BufWrL : public SCUnit {
-public:
-    BufWrL();
+    class BufWrL : public SCUnit {
+    public:
+        BufWrL();
+        int prevPhase;
+        float prevSamp;
+        SndBuf* m_buf;
+        float m_fbufnum;
+        // Destructor
+        // ~BufWrTest();
 
-    // Destructor
-    // ~BufWrL();
+    private:
+        // Calc function
+        void next(int nSamples);
 
-private:
-    // Calc function
-    void next(int nSamples);
-
-    // Member variables
-};
+        // Member variables
+    };
 
 } // namespace BufWrL
