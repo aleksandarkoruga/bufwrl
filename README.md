@@ -42,20 +42,22 @@ script with `--help` to see all available options.
 Variable rate buffer writing is useful in situations such as granular synthesis or evading to reallocate buffers for changing bpms.
 This solution doesn't limit the "skip" so be weary of CPU consumption at very high writing speeds to "large" buffers.
 To see the difference with BufWr.ar try:
-(
-{
-var sig=SinOsc.ar(MouseY.kr(0.2, 15000, 1));
-var buf1= LocalBuf.new(9600);
-var buf2= LocalBuf.new(9600);
-var rate=MouseX.kr(0.2, 2000.0, 1);
-var readRate=8.0;
-var scPhase=Phasor.ar(0, BufRateScale.kr(buf2) * rate, 0, BufFrames.kr(buf2));
 
-var readPhase= ((0.5*BufFrames.kr(buf2))+Phasor.ar(0, BufRateScale.kr(buf2) * readRate, 0, BufFrames.kr(buf2))).wrap(BufFrames.kr(buf2));
 
-BufWrL.ar(buf1, scPhase/BufFrames.kr(buf2),sig);
-BufWr.ar(sig,buf2,scPhase);
+    (
+    {
+    var sig=SinOsc.ar(MouseY.kr(0.2, 15000, 1));
+    var buf1= LocalBuf.new(9600);
+    var buf2= LocalBuf.new(9600);
+    var rate=MouseX.kr(0.2, 2000.0, 1);
+    var readRate=8.0;
+    var scPhase=Phasor.ar(0, BufRateScale.kr(buf2) * rate, 0, BufFrames.kr(buf2));
 
-Sanitize.ar([BufRd.ar(1,buf1,readPhase,interpolation:4),BufRd.ar(1,buf2,readPhase,interpolation:4)]).scope
-}.play
-)
+    var readPhase= ((0.5*BufFrames.kr(buf2))+Phasor.ar(0, BufRateScale.kr(buf2) * readRate, 0, BufFrames.kr(buf2))).wrap(BufFrames.kr(buf2));
+
+    BufWrL.ar(buf1, scPhase/BufFrames.kr(buf2),sig);
+    BufWr.ar(sig,buf2,scPhase);
+
+    Sanitize.ar([BufRd.ar(1,buf1,readPhase,interpolation:4),BufRd.ar(1,buf2,readPhase,interpolation:4)]).scope
+    }.play
+    )
