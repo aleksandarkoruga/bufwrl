@@ -1,0 +1,1 @@
+python D:\supercollider/tools/cmake_gen/generate_server_plugin_cmake.py -P "BufWrL" -p "plugins/BufWrL" -a "Aleksandar Koruga"

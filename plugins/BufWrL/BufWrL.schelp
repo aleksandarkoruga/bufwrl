@@ -1,0 +1,26 @@
+class:: BufWrL
+summary:: Linearly Interpolated BufWr
+related:: TODO
+categories:: UGens>TODO
+
+description::
+
+Linearly Interpolated BufWr
+
+
+classmethods::
+
+method::ar, kr
+
+argument::TODO
+
+argument::TODO
+
+
+examples::
+
+code::
+
+{ BufWrL.ar(/* TODO */) }.play
+
+::
